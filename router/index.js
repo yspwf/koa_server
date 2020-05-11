@@ -11,25 +11,33 @@
 
 // module.exports = router;
 
+// const Home = require('../Controller/Home');
+// const home = new Home();
+//home.test();
+
+// const index = async (ctx, next)=>{
+//     ctx.body = "000000";
+// }
 
 module.exports = (app)=>{
 
     const {router} = app;
-   
-    router.get('/', async (ctx, next)=>{
-        ctx.body = "get";
-    });
+    router.get('/', app.Controller.Home.home);
 
-    router.post('/', async (ctx, next)=>{
-        ctx.body = "post";
-    });
-    router.put('/', async (ctx, next)=>{
-        ctx.body = "put";
-    });
+    router.post('/', app.Controller.Home.index);
 
-    router.delete('/', async (ctx, next)=>{
-        ctx.body = "delete";
-    });
+    //router.get('/', home.test())
+
+    // router.post('/', async (ctx, next)=>{
+    //     ctx.body = "post";
+    // });
+    // router.put('/', async (ctx, next)=>{
+    //     ctx.body = "put";
+    // });
+
+    // router.delete('/', async (ctx, next)=>{
+    //     ctx.body = "delete";
+    // });
 
     app.use(router.routes()).use(router.allowedMethods());
 }
