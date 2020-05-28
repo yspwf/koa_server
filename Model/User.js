@@ -14,5 +14,7 @@ module.exports = (app)=>{
         timestamps: false
     });
 
+    User.sync({ force: false });
+
     return User;
 }
